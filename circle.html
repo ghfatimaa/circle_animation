@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>animation</title>
+    <style>
+      body{
+        background-color: #1c1f33;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        height: 100vh;
+      }
+      .main{
+        height: 300px;
+        width:300px;
+        position: relative;
+      }
+      .main span{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: rotate(calc(36deg * var(--i)));
+      }
+      .main span::after{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        border: 4px solid cyan;
+        box-sizing: border-box;
+        box-shadow: 0px 0px 20px cyan,
+        30px 30px 0px cyan,
+        30px 30px 20px cyan,
+        -30px -30px 0px cyan,
+        -30px -30px 20px cyan,
+        30px -30px 0px cyan,
+        30px -30px 20px cyan,
+        -30px 30px 0px cyan,
+        -30px 30px 20px cyan;
+        animation: animate 5s linear infinite;
+        transition: 2s;
+        transform-origin: 20px;
+        animation-delay: calc(-0.25s * var(--i));
+      }
+      @keyframes animate {
+        0%{rotate: 0deg;
+        filter: hue-rotate(0deg);}
+        100%{rotate: 360deg;
+        filter: hue-rotate(360deg);}
+      }
+      .main:hover span::after{
+        box-shadow: 0px 0px 20px cyan,
+        200px 200px 0px cyan,
+        200px 200px 20px cyan,
+        -200px -200px 0px cyan,
+        -200px -200px 20px cyan,
+        200px -200px 0px cyan,
+        200px -200px 20px cyan,
+        -200px 200px 0px cyan,
+        -200px 200px 20px cyan;
+        transform-origin: 250px;
+      }
+    </style>
+
+    <body>
+      <div class="main">
+        <span style="--i:1"></span>
+        <span style="--i:2"></span>
+        <span style="--i:3"></span>
+        <span style="--i:4"></span>
+        <span style="--i:5"></span>
+        <span style="--i:6"></span>
+        <span style="--i:7"></span>
+        <span style="--i:8"></span>
+        <span style="--i:9"></span>
+        <span style="--i:10"></span>
+      </div>
+    </body>
+  </head>
+</html>
